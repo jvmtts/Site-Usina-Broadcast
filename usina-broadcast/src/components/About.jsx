@@ -13,7 +13,7 @@ export default function About() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              Nossa <span className="text-[#4ade80]">Usina.</span>
+              Usina <span className="text-[#4ade80]">Broadcast</span>
             </h2>
             <p className="text-lg text-[#f5f5f5]/80 mb-6 leading-relaxed">
               Transformamos ideias em experiências audiovisuais de alto impacto. Somos uma produtora focada em entregar qualidade de cinema para o seu projeto, seja ele um podcast, uma transmissão ao vivo ou a cobertura de um grande evento.

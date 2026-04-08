@@ -22,7 +22,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
         >
-          Elevando o nível do seu <span className="text-[#4ade80]">audiovisual.</span>
+          Elevando o nível do seu <span className="text-[#4ade80]">audiovisual</span>
         </motion.h1>
 
         <motion.p

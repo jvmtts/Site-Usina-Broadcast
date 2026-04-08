@@ -31,7 +31,7 @@ export default function Services() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Nossos <span className="text-[#4ade80]">Serviços.</span>
+            Nossos <span className="text-[#4ade80]">Serviços</span>
           </h2>
           <p className="text-lg text-[#f5f5f5]/70 max-w-2xl mx-auto">
             Soluções audiovisuais completas para elevar a comunicação da sua marca ao nível máximo.
