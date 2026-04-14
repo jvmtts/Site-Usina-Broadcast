@@ -5,6 +5,8 @@ export default function Hero() {
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
       <div className="absolute inset-0 z-10 bg-black/50"></div>
       
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-glow z-10"></div>
+
       <video 
         autoPlay 
         loop 
@@ -22,7 +24,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
         >
-          Elevando o nível do seu <span className="text-[#4ade80]">audiovisual</span>
+          Elevando o nível do seu <span className="text-[#4ade80]">audiovisual.</span>
         </motion.h1>
 
         <motion.p

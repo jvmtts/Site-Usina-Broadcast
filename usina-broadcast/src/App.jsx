@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
+import Showcase from './components/Showcase'
 import Services from './components/Services'
 import Footer from './components/Footer'
 import FloatingButtons from './components/FloatingButtons'
@@ -12,6 +13,7 @@ function App() {
       <main className="pt-24">
         <Hero />
         <About />
+        <Showcase />
         <Services />
       </main>
       <Footer />
@@ -20,4 +22,4 @@ function App() {
   )
 }
 
-export default App  
+export default App

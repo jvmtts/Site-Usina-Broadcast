@@ -29,9 +29,14 @@ export default function Header() {
               </a>
             </li>
             <li>
+              <a href="#portfolio" className="group relative py-2 transition hover:text-white">
+                Trabalhos
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+            <li>
               <a href="#servicos" className="group relative py-2 transition hover:text-white flex items-center gap-1.5">
                 Serviços 
-                <span className="text-green-500 text-[11px] transform transition group-hover:rotate-180">▼</span>
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
