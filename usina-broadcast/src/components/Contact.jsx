@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion';
 
 export default function Contact() {
+  const numeroChefe = "5511964467000";
+  const mensagemWpp = "Olá! Acessei o site da Usina Broadcast e gostaria de conversar sobre um projeto.";
+  const linkWhatsapp = `https://wa.me/${numeroChefe}?text=${encodeURIComponent(mensagemWpp)}`;
+
   const contacts = [
     {
       name: 'WhatsApp',
       description: 'Atendimento comercial rápido',
-      link: 'https://wa.me/SEUNUMEROAQUI',
+      link: linkWhatsapp,
       color: 'hover:border-green-500 hover:shadow-[0_0_30px_-5px_rgba(34,197,94,0.3)]',
       icon: (
         <svg className="w-8 h-8 mb-4 text-zinc-300 group-hover:text-green-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
@@ -39,7 +43,6 @@ export default function Contact() {
 
   return (
     <section id="contato" className="py-32 px-6 bg-[#050505] relative overflow-hidden">
-      {/* Efeito de luz sutil no fundo */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-green-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -53,7 +56,7 @@ export default function Contact() {
           <span className="text-[#4ade80] text-sm font-bold uppercase tracking-widest block mb-4">
             Vamos Conversar
           </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+          <h2 className="font-display text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
             O próximo nível do seu <br className="hidden md:block"/> audiovisual começa <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">aqui.</span>
           </h2>
           <p className="text-lg text-zinc-400 font-medium max-w-xl mx-auto">
@@ -75,7 +78,7 @@ export default function Contact() {
               className={`group flex flex-col items-center justify-center p-10 rounded-3xl bg-zinc-900/50 backdrop-blur-sm border-2 border-zinc-800/50 transition-all duration-500 cursor-pointer ${contact.color}`}
             >
               {contact.icon}
-              <h3 className="text-xl font-bold text-white mb-2">{contact.name}</h3>
+              <h3 className="font-display text-xl font-bold text-white mb-2">{contact.name}</h3>
               <p className="text-sm text-zinc-500 text-center font-medium">{contact.description}</p>
             </motion.a>
           ))}

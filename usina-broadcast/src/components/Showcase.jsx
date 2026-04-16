@@ -67,7 +67,7 @@ export default function Showcase() {
   ];
 
   return (
-    <section id="portfolio" className="py-32 px-6 bg-zinc-950">
+    <section id="portfolio" className="py-24 md:py-32 px-6 bg-zinc-950">
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         
         <motion.div
@@ -77,7 +77,7 @@ export default function Showcase() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
             Nosso <span className="text-[#4ade80]">Portfólio</span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto font-medium">
@@ -89,48 +89,57 @@ export default function Showcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          className="flex flex-col md:flex-row h-[600px] w-full gap-2"
+          className="flex flex-col md:flex-row h-[700px] md:h-[600px] w-full gap-2"
         >
           {projects.map((project) => (
             <motion.div
               key={project.id}
               layout
               onMouseEnter={() => setActiveItem(project.id)}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => setActiveItem(project.id)}
               animate={{ 
                 flex: activeItem === project.id ? 5 : 1,
                 opacity: activeItem === project.id ? 1 : 0.4
               }}
-              // A MÁGICA ZERO-BOUNCE: Mola super rápida e sem delay!
               transition={{ type: "spring", bounce: 0, duration: 0.4 }}
               className={`relative h-full rounded-2xl overflow-hidden cursor-pointer group bg-zinc-900 border-2 transition-colors duration-300 ${activeItem === project.id ? 'border-green-500/0 shadow-2xl shadow-green-900/20' : 'border-zinc-800/0'}`}
             >
               <img 
                 src={project.image} 
                 alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:grayscale-0 md:group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
               
-              <div className="absolute bottom-0 left-0 p-6 md:p-8 whitespace-nowrap overflow-hidden">
+              <div className="absolute bottom-0 left-0 p-6 md:p-8 whitespace-nowrap overflow-hidden w-full">
+                
                 <motion.div 
                   initial={false}
                   animate={{ 
                     opacity: activeItem === project.id ? 1 : 0,
                     x: activeItem === project.id ? 0 : -20,
-                    y: activeItem === project.id ? 0 : 10
+                    y: activeItem === project.id ? 0 : 10,
+                    pointerEvents: activeItem === project.id ? "auto" : "none" 
                   }}
                   transition={{ duration: 0.3, delay: activeItem === project.id ? 0.1 : 0 }}
+                  className="flex flex-col items-start"
                 >
-                  <span className="text-[#4ade80] text-sm font-bold uppercase tracking-widest block mb-2">
+                  <span className="text-[#4ade80] text-xs md:text-sm font-bold uppercase tracking-widest block mb-2 whitespace-normal">
                     {project.category}
                   </span>
-                  <h3 className="text-white text-2xl md:text-3xl font-bold mb-4">
+                  <h3 className="font-display text-white text-2xl md:text-3xl font-bold mb-4 whitespace-normal line-clamp-2 md:line-clamp-none">
                     {project.title}
                   </h3>
-                  <div className="inline-flex items-center gap-2 text-white bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-white/20 transition-colors group-hover:pr-4">
+                  
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation(); 
+                      setSelectedProject(project);
+                    }}
+                    className="inline-flex items-center gap-2 text-white bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-white/20 transition-colors group-hover:pr-4"
+                  >
                     Ver Projeto Completo <span className="transform transition-transform group-hover:translate-x-1">→</span>
-                  </div>
+                  </button>
                 </motion.div>
               </div>
             </motion.div>
@@ -147,7 +156,7 @@ export default function Showcase() {
             transition={{ type: "spring", bounce: 0, duration: 0.5 }}
             className="fixed inset-0 z-[100] bg-[#0a0a0a] overflow-y-auto"
           >
-            <div className="relative h-[60vh] w-full">
+            <div className="relative h-[40vh] md:h-[60vh] w-full">
               <img 
                 src={selectedProject.image} 
                 alt={selectedProject.title} 
@@ -157,30 +166,30 @@ export default function Showcase() {
               
               <button 
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-8 right-8 bg-black/50 backdrop-blur-md text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors border border-white/10 z-50 cursor-pointer"
+                className="absolute top-4 right-4 md:top-8 md:right-8 bg-black/50 backdrop-blur-md text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors border border-white/10 z-50 cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
-            <div className="max-w-4xl mx-auto px-6 -mt-32 relative z-10 pb-32">
-              <span className="text-[#4ade80] font-bold uppercase tracking-widest text-sm mb-4 block">
+            <div className="max-w-4xl mx-auto px-6 -mt-20 md:-mt-32 relative z-10 pb-32">
+              <span className="text-[#4ade80] font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
                 {selectedProject.category}
               </span>
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+              <h2 className="font-display text-3xl md:text-6xl font-black text-white mb-8 tracking-tight leading-tight">
                 {selectedProject.title}
               </h2>
               
-              <div className="bg-zinc-900/80 backdrop-blur-lg border border-zinc-800 p-8 md:p-12 rounded-3xl mb-16">
-                <h3 className="text-xl text-white font-bold mb-4">O Desafio</h3>
-                <p className="text-zinc-300 text-lg leading-relaxed">
+              <div className="bg-zinc-900/80 backdrop-blur-lg border border-zinc-800 p-6 md:p-12 rounded-3xl mb-12 md:mb-16">
+                <h3 className="font-display text-xl text-white font-bold mb-4">O Desafio</h3>
+                <p className="text-zinc-300 text-base md:text-lg leading-relaxed">
                   {selectedProject.description}
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {selectedProject.gallery.map((img, index) => (
-                  <div key={index} className="aspect-square rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
+                  <div key={index} className="aspect-square rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800">
                     <img src={img} alt={`Galeria ${index + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
                   </div>
                 ))}
