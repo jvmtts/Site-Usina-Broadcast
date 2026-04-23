@@ -9,7 +9,7 @@ export default function About() {
     <section id="sobre" className="py-32 px-6 bg-[#0a0a0a] relative overflow-hidden">
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-green-500/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2"></div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center relative z-10">
         
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -68,20 +68,20 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="grid grid-cols-2 gap-4 h-[600px]"
+          className="grid grid-cols-2 gap-4 h-[750px]"
         >
           <div className="flex flex-col gap-4 h-full pt-12">
             <div className="bg-zinc-900 rounded-3xl w-full h-3/5 overflow-hidden border border-white/5 shadow-2xl">
               <img 
                 src={Camera1} 
-                alt="Equipe Usina em ação" 
+                alt="Operador de câmera da Usina Broadcast" 
                 className="w-full h-full object-cover hover:grayscale-0 hover:scale-105 transition-all duration-700 ease-out"
               />
             </div>
             <div className="bg-zinc-900 rounded-3xl w-full h-2/5 overflow-hidden border border-white/5 shadow-2xl">
               <img 
-                src={Camera2} 
-                alt="Câmera de cinema" 
+                src={Drone} 
+                alt="Operação de drone em externa" 
                 className="w-full h-full object-cover hover:grayscale-0 hover:scale-105 transition-all duration-700 ease-out"
               />
             </div>
@@ -90,15 +90,15 @@ export default function About() {
           <div className="flex flex-col gap-4 h-full pb-12">
             <div className="bg-zinc-900 rounded-3xl w-full h-2/5 overflow-hidden border border-white/5 shadow-2xl">
               <img 
-                src={Equipamentos} 
-                alt="Equipamentos de alta performance" 
+                src={Camera2} 
+                alt="Câmeras de alta performance no set" 
                 className="w-full h-full object-cover hover:grayscale-0 hover:scale-105 transition-all duration-700 ease-out"
               />
             </div>
             <div className="bg-zinc-900 rounded-3xl w-full h-3/5 overflow-hidden border border-white/5 shadow-2xl">
               <img 
-                src={Drone} 
-                alt="Captura com drone" 
+                src={Equipamentos} 
+                alt="Setup de equipamentos e monitoramento" 
                 className="w-full h-full object-cover hover:grayscale-0 hover:scale-105 transition-all duration-700 ease-out"
               />
             </div>

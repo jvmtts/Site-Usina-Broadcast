@@ -15,6 +15,20 @@ import covImg11 from '../assets/Cobertura-de-eventos/imagem11.webp';
 import covImg12 from '../assets/Cobertura-de-eventos/imagem12.webp';
 import covImg13 from '../assets/Cobertura-de-eventos/imagem13.webp';
 
+import corpImg1 from '../assets/Eventos-Corporativos/imagem1.webp';
+import corpImg2 from '../assets/Eventos-Corporativos/imagem2.webp';
+import corpImg3 from '../assets/Eventos-Corporativos/imagem3.webp';
+import corpImg4 from '../assets/Eventos-Corporativos/imagem4.webp';
+import corpImg5 from '../assets/Eventos-Corporativos/imagem5.webp';
+import corpImg6 from '../assets/Eventos-Corporativos/imagem6.webp';
+import corpImg7 from '../assets/Eventos-Corporativos/imagem7.webp';
+import corpImg8 from '../assets/Eventos-Corporativos/imagem8.webp';
+import corpImg9 from '../assets/Eventos-Corporativos/imagem9.webp';
+import corpImg10 from '../assets/Eventos-Corporativos/imagem10.webp';
+import corpImg11 from '../assets/Eventos-Corporativos/imagem11.webp';
+import corpImg12 from '../assets/Eventos-Corporativos/imagem12.webp';
+import corpImg13 from '../assets/Eventos-Corporativos/imagem13.webp';
+
 import ilhabelaImg from '../assets/ilhabela.png';
 
 export default function Showcase() {
@@ -45,6 +59,18 @@ export default function Showcase() {
     },
     {
       id: 1,
+      title: "Eventos Corporativos",
+      category: "Business & Feiras",
+      image: corpImg1,
+      description: "Registro de alto padrão para o mercado corporativo. Cobrimos palestras, estandes em feiras e ativações de marca com discrição e precisão técnica. Entregamos desde o material para a imprensa até os cortes virais para as redes sociais da sua empresa.",
+      gallery: [
+        corpImg2, corpImg3, corpImg4, corpImg5,
+        corpImg6, corpImg7, corpImg8, corpImg9,
+        corpImg10, corpImg11, corpImg12, corpImg13
+      ]
+    },
+    {
+      id: 2,
       title: "Travessia São Sebastião x Ilhabela",
       category: "Cinematografia Náutica",
       image: ilhabelaImg, 
@@ -53,18 +79,6 @@ export default function Showcase() {
         "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop", 
         "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop", 
         "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
-      ]
-    },
-    {
-      id: 2,
-      title: "COMNEcT CAST - AUTOCOM",
-      category: "Eventos & Podcasts",
-      image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1000&auto=format&fit=crop",
-      description: "Montagem e operação de um estúdio completo de podcast no meio de uma das maiores feiras do setor. Entregamos captação de áudio cristalino e cortes de vídeo dinâmicos e imediatos, conectando o que acontecia no evento diretamente para as redes sociais.",
-      gallery: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPhkUrz3VmklA5TlawmCqVaqOY3jkH9D9dLg&s", 
-        "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=800&auto=format&fit=crop"
       ]
     },
     {
@@ -213,7 +227,6 @@ export default function Showcase() {
                     <img 
                       src={img} 
                       alt={`Galeria ${index + 1}`} 
-                      loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform" 
                     />
