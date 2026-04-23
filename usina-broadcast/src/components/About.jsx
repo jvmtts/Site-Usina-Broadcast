@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
+import Camera1 from '../assets/fotos-usinabroadcast/Camera1.png';
+import Equipamentos from '../assets/fotos-usinabroadcast/Equipamentos.png';
+import Camera2 from '../assets/fotos-usinabroadcast/Camera2.png';
+import Drone from '../assets/fotos-usinabroadcast/Drone.png';
 
 export default function About() {
   return (
     <section id="sobre" className="py-32 px-6 bg-[#0a0a0a] relative overflow-hidden">
-
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-green-500/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -29,7 +32,7 @@ export default function About() {
               A Usina Broadcast é especializada em capturar a adrenalina do setor náutico e off-road com a precisão técnica exigida pelo mercado corporativo.
             </p>
             <p>
-              Do dinamismo de montar estúdios de podcast ao vivo na AUTOCOM até a complexidade logística de coberturas em expedições por Alter do Chão e travessias em Ilhabela, nós entregamos qualidade de cinema em qualquer terreno.
+              Do dinamismo de montar estúdios de podcast ao vivo na AUTOCOM até a complexidade logística de coberturas em expedições por Alter do Chão e travessias em Ilhabela, entregamos qualidade de cinema em qualquer terreno.
             </p>
           </div>
 
@@ -67,43 +70,40 @@ export default function About() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="grid grid-cols-2 gap-4 h-[600px]"
         >
-
           <div className="flex flex-col gap-4 h-full pt-12">
             <div className="bg-zinc-900 rounded-3xl w-full h-3/5 overflow-hidden border border-white/5 shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?q=80&w=800&auto=format&fit=crop" 
+                src={Camera1} 
                 alt="Equipe Usina em ação" 
                 className="w-full h-full object-cover hover:grayscale-0 hover:scale-105 transition-all duration-700 ease-out"
               />
             </div>
             <div className="bg-zinc-900 rounded-3xl w-full h-2/5 overflow-hidden border border-white/5 shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1527011045974-4569e5d48a8b?q=80&w=800&auto=format&fit=crop" 
-                alt="Equipamentos de alta performance" 
+                src={Camera2} 
+                alt="Câmera de cinema" 
                 className="w-full h-full object-cover hover:grayscale-0 hover:scale-105 transition-all duration-700 ease-out"
               />
             </div>
           </div>
           
-          {/* Coluna 2 */}
           <div className="flex flex-col gap-4 h-full pb-12">
             <div className="bg-zinc-900 rounded-3xl w-full h-2/5 overflow-hidden border border-white/5 shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?q=80&w=800&auto=format&fit=crop" 
-                alt="Estúdio de Podcast" 
+                src={Equipamentos} 
+                alt="Equipamentos de alta performance" 
                 className="w-full h-full object-cover hover:grayscale-0 hover:scale-105 transition-all duration-700 ease-out"
               />
             </div>
             <div className="bg-zinc-900 rounded-3xl w-full h-3/5 overflow-hidden border border-white/5 shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1533561797500-4bad4728594e?q=80&w=800&auto=format&fit=crop" 
-                alt="Cobertura externa de eventos" 
+                src={Drone} 
+                alt="Captura com drone" 
                 className="w-full h-full object-cover hover:grayscale-0 hover:scale-105 transition-all duration-700 ease-out"
               />
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

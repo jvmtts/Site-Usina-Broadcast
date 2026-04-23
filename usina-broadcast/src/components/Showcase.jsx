@@ -1,31 +1,46 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import covImg1 from '../assets/Cobertura-de-eventos/imagem1.webp';
+import covImg2 from '../assets/Cobertura-de-eventos/imagem2.webp';
+import covImg3 from '../assets/Cobertura-de-eventos/imagem3.webp';
+import covImg4 from '../assets/Cobertura-de-eventos/imagem4.webp';
+import covImg5 from '../assets/Cobertura-de-eventos/imagem5.webp';
+import covImg6 from '../assets/Cobertura-de-eventos/imagem6.webp';
+import covImg7 from '../assets/Cobertura-de-eventos/imagem7.webp';
+import covImg8 from '../assets/Cobertura-de-eventos/imagem8.webp';
+import covImg9 from '../assets/Cobertura-de-eventos/imagem9.webp';
+import covImg10 from '../assets/Cobertura-de-eventos/imagem10.webp';
+import covImg11 from '../assets/Cobertura-de-eventos/imagem11.webp';
+import covImg12 from '../assets/Cobertura-de-eventos/imagem12.webp';
+import covImg13 from '../assets/Cobertura-de-eventos/imagem13.webp';
+
 import ilhabelaImg from '../assets/ilhabela.png';
 
 export default function Showcase() {
   const [activeItem, setActiveItem] = useState(0);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [zoomedImage, setZoomedImage] = useState(null);
 
   useEffect(() => {
-    if (selectedProject) {
+    if (selectedProject || zoomedImage) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [selectedProject]);
+  }, [selectedProject, zoomedImage]);
 
   const projects = [
     {
       id: 0,
-      title: "Expedição Alter do Chão 2026",
-      category: "Cobertura Off-Road",
-      image: "https://www.escolhaviajar.com/wp-content/uploads/2018/11/Praias-de-Alter-do-Ch%C3%A3o.jpg", 
-      description: "A 4ª edição da expedição exigiu logística impecável. Acompanhamos a frota com drones de alta velocidade e câmeras estabilizadas nos veículos, garantindo takes de tirar o fôlego mesmo nas condições mais extremas da selva e dos rios, sem perder um segundo de ação.",
+      title: "Cobertura de Eventos",
+      category: "Aftermovies & Captação",
+      image: covImg1,
+      description: "Nossa equipe mergulha na ação para capturar a essência do seu evento. Com operação ágil de drones, câmeras estabilizadas e olhar cinematográfico, entregamos um material bruto rico e cortes dinâmicos que transmitem a verdadeira energia do momento, sem perder um segundo de ação.",
       gallery: [
-        "https://upload.wikimedia.org/wikipedia/commons/e/ed/Alter_do_Ch%C3%A3o_486a.jpg", 
-        "https://cafeviagem.com/wp-content/uploads/2023/02/Dicas-de-Alter-do-Chao-praias-2.jpg", 
-        "https://transparencia.santarem.pa.gov.br/storage/midias/2019/grandes/up_ag_3217_93f7e0c9-b2d8-4c1b-adb5-4d603d87ffa9.jpg"
+        covImg2, covImg3, covImg4, covImg5,
+        covImg6, covImg7, covImg8, covImg9,
+        covImg10, covImg11, covImg12, covImg13
       ]
     },
     {
@@ -48,8 +63,8 @@ export default function Showcase() {
       description: "Montagem e operação de um estúdio completo de podcast no meio de uma das maiores feiras do setor. Entregamos captação de áudio cristalino e cortes de vídeo dinâmicos e imediatos, conectando o que acontecia no evento diretamente para as redes sociais.",
       gallery: [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPhkUrz3VmklA5TlawmCqVaqOY3jkH9D9dLg&s", 
-        "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFhUXGCAaGRgYGCAZHhsfGh8hHR4bGR8dHiggGx4lIBgaITEhJikrLi4uGiAzODMtNygtLi0BCgoKDg0OGxAQGzImICYwLS0tMC0tLTItLS0tLS0yLzUtLS0tLS8vLS0tLy0tLS0vLS0tLS0tLS0tLS0tLS0tLf/AABEIAKsBJwMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAAFBgMEAQIHAP/EAEEQAAIBAgQDBgMGAwcEAgMAAAECEQMhAAQSMQVBUQYTImFxgTKRoRQjQlKxwQfR8CQzYpKi4fEVQ3KCFuJjssL/xAAaAQACAwEBAAAAAAAAAAAAAAACAwEEBQAG/8QAMREAAgIBAwEGBQQCAwEAAAAAAAECEQMSITEEBSJBUWFxMoHB0fATkbHxoeEjM3IU/9oADAMBAAIRAxEAPwBa4TxCojtQ+zLXSQSp8QXcRsQAZmPPEfaLgOWI1CmmVbf45LeWhAVUcre843PGHbwk6UuNOk0wIsR4Ay7/AJmxGjalIpi0H4QKg9zTJA94xck4paeV8vp9xaj4hXIdj0+zpUyncV6rKCRVqExInYLB9DHrhd4tU4jRP31FlXogBSBvBQ2FxvO4xayDhqahYDADUZsp6QN28o6TGC2R4hVpkkOzmbmoJmOpbYb7DCXHFInvCtkO0I6R/q/+2GThHFabOGsCDuhggfriamKWYo1DXy1EspMON9+og8uuB2U7N5et/d1jQIFg51KT1WbhY5kz7XwqUPBMnUdXy/HcrWy2iogLAQJ3nkbXwgcVVVMpUakA4PjGochZlGpR4YnS0YCVKFeiFCV6NXVsi1Az3t4kNx7GMDOJ5+qHC1w1MKYIKkX5gBh9JOESxPxDjNWPJz2YanPianP97TK1kQC4ussuwk1ALj5ieDcZpfacw1UI6OswVNQMZBGgAGbGxMC++F5OPERVptTpOu2kQ/zNvXfBZj37F63d1XMgqw0MLi4qLpYm1tWu0+YwcXp2BcbdhTiPZ3Ij7xs7Tp1GulNT3iqDyABLsf8AEPYRhS/6dVh4oVHUMRPdlQQIOqGAIBBDSRsRgvwhxRPeUXqU5JEuRp3j+8pLdbWDIB54IZTOVddT7QqNRbxNVt4gBCgupNPw3MNpnU1hJxNRZ26ECqXRdSEopIEBiQfOOnlzxmiARDFqRa5qL8Jm4kKBAvbYDHQO2NSjmKNErTSnV71AzBQLXANrFbSL8oxWz/Y2sqo9JlfUgsTp5Axe179Lnzx1OtiL8xPoTSbUyqywIdRrWD+bnB6/LBzJolRNdLSQd1MkDqOq/UYC0aOl20lqbcwRvfZlN59hjJy7GSKbU3H/AHFOhW9Q0D+t8C46vAYnQQydUoEIlGUkqIEi59mHUX9sNGV7SrVp1KdRdNXQ3wiVNjfqJwn5TM1FpAMKbICbqSx3mSFDD3t64vZekKo1LVB/KQLiRBXU0ja1x746NxfOwMkpIYsjlKeY1U6gLhadMBhpm63mYkH3wD452Zq5YSgDpFo5eX9e043oV2pyIe8TNQo2lbC1MLaJvceuGTh9PJVAai6RVUG1QjX5w34h7+wwWqMtgUnFWc34cdSBRq8JuoBJJFvwgkc/PEn2JwJWmUYGVJ0rHi2YFvFM9Ogwz8TyuXqgp31NKgjSk6g03gqJ2jfl57YWs7SakQlVCKm2rTIInqbMD/zHJbtMYnastZbMuXcFqSsSCwvG2mIIutpibG+LP2ao27MT1VYnYAS5YehwIzDuzKygqyiUMgERPQGf98X8hxGtVGkmmDexUmR5AsBF58tx0wDVqyVya1sirGTIMG7HYWgwOmxHni/L&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=800&auto=format&fit=crop"
+        "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=800&auto=format&fit=crop"
       ]
     },
     {
@@ -69,7 +84,6 @@ export default function Showcase() {
   return (
     <section id="portfolio" className="py-24 md:py-32 px-6 bg-zinc-950">
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
-        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -84,6 +98,7 @@ export default function Showcase() {
             Da poeira do off-road aos palcos corporativos. Clique nos projetos para ver os detalhes da nossa entrega visual.
           </p>
         </motion.div>
+
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -107,12 +122,12 @@ export default function Showcase() {
               <img 
                 src={project.image} 
                 alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:grayscale-0 md:group-hover:scale-105"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:grayscale-0 md:group-hover:scale-105 will-change-transform"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
               
               <div className="absolute bottom-0 left-0 p-6 md:p-8 whitespace-nowrap overflow-hidden w-full">
-                
                 <motion.div 
                   initial={false}
                   animate={{ 
@@ -150,29 +165,30 @@ export default function Showcase() {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            initial={{ opacity: 0, y: "100%" }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "100%" }}
-            transition={{ type: "spring", bounce: 0, duration: 0.5 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
             className="fixed inset-0 z-[100] bg-[#0a0a0a] overflow-y-auto"
           >
+            <button 
+              onClick={() => setSelectedProject(null)}
+              className="fixed top-6 right-6 md:top-10 md:right-10 bg-black/50 backdrop-blur-md text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors border border-white/10 z-[150] cursor-pointer"
+            >
+              ✕
+            </button>
+
             <div className="relative h-[40vh] md:h-[60vh] w-full">
               <img 
                 src={selectedProject.image} 
                 alt={selectedProject.title} 
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent"></div>
-              
-              <button 
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 md:top-8 md:right-8 bg-black/50 backdrop-blur-md text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors border border-white/10 z-50 cursor-pointer"
-              >
-                ✕
-              </button>
             </div>
 
-            <div className="max-w-4xl mx-auto px-6 -mt-20 md:-mt-32 relative z-10 pb-32">
+            <div className="max-w-6xl mx-auto px-6 -mt-20 md:-mt-32 relative z-10 pb-32">
               <span className="text-[#4ade80] font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
                 {selectedProject.category}
               </span>
@@ -181,16 +197,26 @@ export default function Showcase() {
               </h2>
               
               <div className="bg-zinc-900/80 backdrop-blur-lg border border-zinc-800 p-6 md:p-12 rounded-3xl mb-12 md:mb-16">
-                <h3 className="font-display text-xl text-white font-bold mb-4">O Desafio</h3>
+                <h3 className="font-display text-xl text-white font-bold mb-4">Visão Geral</h3>
                 <p className="text-zinc-300 text-base md:text-lg leading-relaxed">
                   {selectedProject.description}
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {selectedProject.gallery.map((img, index) => (
-                  <div key={index} className="aspect-square rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800">
-                    <img src={img} alt={`Galeria ${index + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+                  <div 
+                    key={index} 
+                    onClick={() => setZoomedImage(img)}
+                    className="aspect-square rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 cursor-zoom-in group"
+                  >
+                    <img 
+                      src={img} 
+                      alt={`Galeria ${index + 1}`} 
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform" 
+                    />
                   </div>
                 ))}
               </div>
@@ -204,6 +230,39 @@ export default function Showcase() {
                 </button>
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {zoomedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setZoomedImage(null)}
+            className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
+          >
+            <button 
+              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
+              onClick={() => setZoomedImage(null)}
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <motion.img
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              src={zoomedImage}
+              alt="Ampliada"
+              decoding="async"
+              className="max-w-full max-h-full object-contain rounded-xl shadow-2xl will-change-transform"
+              onClick={(e) => e.stopPropagation()}
+            />
           </motion.div>
         )}
       </AnimatePresence>
