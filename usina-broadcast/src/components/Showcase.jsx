@@ -29,6 +29,20 @@ import corpImg11 from '../assets/Eventos-Corporativos/imagem11.webp';
 import corpImg12 from '../assets/Eventos-Corporativos/imagem12.webp';
 import corpImg13 from '../assets/Eventos-Corporativos/imagem13.webp';
 
+import socImg1 from '../assets/Social-Media/imagem1.webp';
+import socImg2 from '../assets/Social-Media/imagem2.webp';
+import socImg3 from '../assets/Social-Media/imagem3.webp';
+import socImg4 from '../assets/Social-Media/imagem4.webp';
+import socImg5 from '../assets/Social-Media/imagem5.webp';
+import socImg6 from '../assets/Social-Media/imagem6.webp';
+import socImg7 from '../assets/Social-Media/imagem7.webp';
+import socImg8 from '../assets/Social-Media/imagem8.webp';
+import socImg9 from '../assets/Social-Media/imagem9.webp';
+import socImg10 from '../assets/Social-Media/imagem10.webp';
+import socImg11 from '../assets/Social-Media/imagem11.webp';
+import socImg12 from '../assets/Social-Media/imagem12.webp';
+import socImg13 from '../assets/Social-Media/imagem13.webp';
+
 import ilhabelaImg from '../assets/ilhabela.png';
 
 export default function Showcase() {
@@ -71,6 +85,18 @@ export default function Showcase() {
     },
     {
       id: 2,
+      title: "Content Maker & Redes Sociais",
+      category: "Reels, TikToks & In-Loco",
+      image: socImg1,
+      description: "Esqueça a cobertura tradicional. Aqui o foco é gerar engajamento instantâneo. Nossa equipe atua de forma ágil para capturar a essência do seu evento em tempo real, criando vídeos na vertical e fotos de alto impacto. Entregamos material formatado e pronto para viralizar, conectando sua marca à audiência digital enquanto tudo acontece.",
+      gallery: [
+        socImg2, socImg3, socImg4, socImg5,
+        socImg6, socImg7, socImg8, socImg9,
+        socImg10, socImg11, socImg12, socImg13
+      ]
+    },
+    {
+      id: 3,
       title: "Travessia São Sebastião x Ilhabela",
       category: "Cinematografia Náutica",
       image: ilhabelaImg, 
@@ -80,23 +106,19 @@ export default function Showcase() {
         "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop", 
         "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
       ]
-    },
-    {
-      id: 3,
-      title: "Setup Corporate Master",
-      category: "Transmissão ao Vivo",
-      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop",
-      description: "Transmissão corporativa de alto padrão com multicâmeras 4K, iluminação cênica e gestão simultânea de mídia. Segurança total na transmissão para que a mensagem chegasse com qualidade de televisão a todos os espectadores.",
-      gallery: [
-        "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1520697830682-8f111075677b?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=800&auto=format&fit=crop"
-      ]
     }
   ];
 
+  const allImages = projects.flatMap(p => [p.image, ...p.gallery]).filter(Boolean);
+
   return (
-    <section id="portfolio" className="py-24 md:py-32 px-6 bg-zinc-950">
+    <section id="portfolio" className="py-24 md:py-32 px-6 bg-zinc-950 relative">
+      <div className="absolute opacity-0 pointer-events-none w-0 h-0 overflow-hidden z-[-1]">
+        {allImages.map((src, idx) => (
+          <img key={`preload-${idx}`} src={src} alt="" loading="eager" fetchpriority="low" />
+        ))}
+      </div>
+
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -179,10 +201,10 @@ export default function Showcase() {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.1 }}
             className="fixed inset-0 z-[100] bg-[#0a0a0a] overflow-y-auto"
           >
             <button 
@@ -192,17 +214,16 @@ export default function Showcase() {
               ✕
             </button>
 
-            <div className="relative h-[40vh] md:h-[60vh] w-full">
+            <div className="relative h-[40vh] md:h-[60vh] w-full bg-[#0a0a0a]">
               <img 
                 src={selectedProject.image} 
                 alt={selectedProject.title} 
-                decoding="async"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover absolute inset-0"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent z-10"></div>
             </div>
 
-            <div className="max-w-6xl mx-auto px-6 -mt-20 md:-mt-32 relative z-10 pb-32">
+            <div className="max-w-6xl mx-auto px-6 -mt-20 md:-mt-32 relative z-20 pb-32">
               <span className="text-[#4ade80] font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
                 {selectedProject.category}
               </span>
@@ -222,13 +243,12 @@ export default function Showcase() {
                   <div 
                     key={index} 
                     onClick={() => setZoomedImage(img)}
-                    className="aspect-square rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 cursor-zoom-in group"
+                    className="aspect-square rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 cursor-zoom-in group relative"
                   >
                     <img 
                       src={img} 
                       alt={`Galeria ${index + 1}`} 
-                      decoding="async"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform" 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform absolute inset-0" 
                     />
                   </div>
                 ))}
@@ -253,7 +273,7 @@ export default function Showcase() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.1 }}
             onClick={() => setZoomedImage(null)}
             className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
           >
@@ -269,7 +289,7 @@ export default function Showcase() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.1 }}
               src={zoomedImage}
               alt="Ampliada"
               decoding="async"
