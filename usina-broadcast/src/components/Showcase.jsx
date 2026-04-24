@@ -50,14 +50,6 @@ export default function Showcase() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [zoomedImage, setZoomedImage] = useState(null);
 
-  useEffect(() => {
-    if (selectedProject || zoomedImage) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [selectedProject, zoomedImage]);
-
   const projects = [
     {
       id: 0,
@@ -109,16 +101,33 @@ export default function Showcase() {
     }
   ];
 
-  const allImages = projects.flatMap(p => [p.image, ...p.gallery]).filter(Boolean);
+  useEffect(() => {
+    if (selectedProject || zoomedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [selectedProject, zoomedImage]);
+
+  useEffect(() => {
+    const preloadAllImages = () => {
+      projects.forEach(project => {
+        const allImgs = [project.image, ...(project.gallery || [])];
+        allImgs.forEach(src => {
+          if (src && typeof src === 'string') {
+            const img = new Image();
+            img.src = src;
+          }
+        });
+      });
+    };
+    
+    const timer = setTimeout(preloadAllImages, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section id="portfolio" className="py-24 md:py-32 px-6 bg-zinc-950 relative">
-      <div className="absolute opacity-0 pointer-events-none w-0 h-0 overflow-hidden z-[-1]">
-        {allImages.map((src, idx) => (
-          <img key={`preload-${idx}`} src={src} alt="" loading="eager" fetchpriority="low" />
-        ))}
-      </div>
-
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -158,7 +167,6 @@ export default function Showcase() {
               <img 
                 src={project.image} 
                 alt={project.title}
-                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:grayscale-0 md:group-hover:scale-105 will-change-transform"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
@@ -204,7 +212,7 @@ export default function Showcase() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.15 }}
             className="fixed inset-0 z-[100] bg-[#0a0a0a] overflow-y-auto"
           >
             <button 
@@ -248,7 +256,7 @@ export default function Showcase() {
                     <img 
                       src={img} 
                       alt={`Galeria ${index + 1}`} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform absolute inset-0" 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform" 
                     />
                   </div>
                 ))}
@@ -292,7 +300,6 @@ export default function Showcase() {
               transition={{ duration: 0.1 }}
               src={zoomedImage}
               alt="Ampliada"
-              decoding="async"
               className="max-w-full max-h-full object-contain rounded-xl shadow-2xl will-change-transform"
               onClick={(e) => e.stopPropagation()}
             />
