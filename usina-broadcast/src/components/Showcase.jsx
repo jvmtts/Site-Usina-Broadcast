@@ -89,7 +89,7 @@ export default function Showcase() {
     },
     {
       id: 3,
-      title: "Travessia São Sebastião x Ilhabela",
+      title: "Transmissão Ao Vivo",
       category: "Cinematografia Náutica",
       image: ilhabelaImg, 
       description: "Cobertura completa do evento náutico, operando equipamentos à prova d'água e coordenando a captação entre as embarcações e a equipe em terra. O resultado foi um material vibrante que capturou a essência da travessia e a adrenalina de todos os envolvidos.",
