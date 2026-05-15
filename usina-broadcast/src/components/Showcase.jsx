@@ -43,7 +43,19 @@ import socImg11 from '../assets/Social-Media/imagem11.webp';
 import socImg12 from '../assets/Social-Media/imagem12.webp';
 import socImg13 from '../assets/Social-Media/imagem13.webp';
 
-import ilhabelaImg from '../assets/ilhabela.png';
+import liveImg1 from '../assets/Transmissão-Ao-Vivo/image1.png';
+import liveImg2 from '../assets/Transmissão-Ao-Vivo/imagem 2.jpeg';
+import liveImg3 from '../assets/Transmissão-Ao-Vivo/imagem3.jpeg';
+import liveImg4 from '../assets/Transmissão-Ao-Vivo/imagem4.jpeg';
+import liveImg5 from '../assets/Transmissão-Ao-Vivo/imagem5.jpeg';
+import liveImg6 from '../assets/Transmissão-Ao-Vivo/imagem6.jpeg';
+import liveImg7 from '../assets/Transmissão-Ao-Vivo/imagem7.jpeg';
+import liveImg8 from '../assets/Transmissão-Ao-Vivo/imagem8.jpeg';
+import liveImg9 from '../assets/Transmissão-Ao-Vivo/imagem9.jpeg';
+import liveImg10 from '../assets/Transmissão-Ao-Vivo/imagem10.jpeg';
+import liveImg11 from '../assets/Transmissão-Ao-Vivo/imagem11.jpeg';
+import liveImg12 from '../assets/Transmissão-Ao-Vivo/imagem12.jpeg';
+import liveImg13 from '../assets/Transmissão-Ao-Vivo/image13.png';
 
 export default function Showcase() {
   const [activeItem, setActiveItem] = useState(0);
@@ -90,13 +102,14 @@ export default function Showcase() {
     {
       id: 3,
       title: "Transmissão Ao Vivo",
-      category: "Cinematografia Náutica",
-      image: ilhabelaImg, 
-      description: "Cobertura completa do evento náutico, operando equipamentos à prova d'água e coordenando a captação entre as embarcações e a equipe em terra. O resultado foi um material vibrante que capturou a essência da travessia e a adrenalina de todos os envolvidos.",
+      category: "Setup & Broadcast",
+      image: liveImg1, 
+      imagePosition: "object-right",
+      description: "Transmissão corporativa de alto padrão com multicâmeras 4K, iluminação cênica e gestão simultânea de mídia. Montamos estúdios móveis de podcast e coordenamos a segurança total da transmissão para que a sua mensagem chegue com qualidade de televisão a todos os espectadores.",
       gallery: [
-        "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop", 
-        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+        liveImg2, liveImg3, liveImg4, liveImg5,
+        liveImg6, liveImg7, liveImg8, liveImg9,
+        liveImg10, liveImg11, liveImg12, liveImg13
       ]
     }
   ];
@@ -108,23 +121,6 @@ export default function Showcase() {
       document.body.style.overflow = 'unset';
     }
   }, [selectedProject, zoomedImage]);
-
-  useEffect(() => {
-    const preloadAllImages = () => {
-      projects.forEach(project => {
-        const allImgs = [project.image, ...(project.gallery || [])];
-        allImgs.forEach(src => {
-          if (src && typeof src === 'string') {
-            const img = new Image();
-            img.src = src;
-          }
-        });
-      });
-    };
-    
-    const timer = setTimeout(preloadAllImages, 1500);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section id="portfolio" className="py-24 md:py-32 px-6 bg-zinc-950 relative">
@@ -167,7 +163,7 @@ export default function Showcase() {
               <img 
                 src={project.image} 
                 alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:grayscale-0 md:group-hover:scale-105 will-change-transform"
+                className={`absolute inset-0 w-full h-full transition-all duration-700 ease-out group-hover:grayscale-0 md:group-hover:scale-105 will-change-transform object-cover ${project.imagePosition || 'object-center'}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
               
@@ -226,7 +222,7 @@ export default function Showcase() {
               <img 
                 src={selectedProject.image} 
                 alt={selectedProject.title} 
-                className="w-full h-full object-cover absolute inset-0"
+                className={`w-full h-full absolute inset-0 object-cover ${selectedProject.imagePosition || 'object-center'}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent z-10"></div>
             </div>
@@ -256,6 +252,7 @@ export default function Showcase() {
                     <img 
                       src={img} 
                       alt={`Galeria ${index + 1}`} 
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 will-change-transform" 
                     />
                   </div>
@@ -275,6 +272,7 @@ export default function Showcase() {
         )}
       </AnimatePresence>
 
+      
       <AnimatePresence>
         {zoomedImage && (
           <motion.div

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import bgVideo from '../assets/video-fundo.MOV';
+import bgVideo from '../assets/video-fundo.mp4';
+import heroPoster from '../assets/hero.png';
 
 export default function Hero() {
   return (
@@ -10,10 +11,12 @@ export default function Hero() {
         loop 
         muted 
         playsInline 
+        preload="auto"
+        poster={heroPoster}
         disablePictureInPicture
         disableRemotePlayback
         controlsList="nodownload noplaybackrate nofullscreen"
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-50"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-50 transition-opacity duration-1000"
       >
         <source src={bgVideo} type="video/mp4" />
       </video>
