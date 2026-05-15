@@ -20,7 +20,7 @@ export default function Contact() {
     {
       name: 'E-mail',
       description: 'Propostas e briefings detalhados',
-      link: 'mailto:contato@usinabroadcast.com',
+      link: 'mailto:usinadojet@gmail.com',
       color: 'hover:border-zinc-300 hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]',
       icon: (
         <svg className="w-8 h-8 mb-4 text-zinc-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -80,7 +80,7 @@ export default function Contact() {
             <motion.a
               key={contact.name}
               href={contact.link}
-              target="_blank"
+              target={contact.name === 'E-mail' ? "_self" : "_blank"}
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
